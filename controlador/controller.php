@@ -141,8 +141,8 @@
 
                 
                 #COMPARAR LOS TOKENS
-                $usuario = MvcModel::mdlUsuarios("usuarios","token", $_POST["tkUser"]);
-                $compara = md5($usuario["nombre"]."+".$usuario["email"]);
+                $usuario = MvcModel::mdlUsuarios("usuarios","token_usuario", $_POST["tkUser"]);
+                $compara = md5($usuario["user_usuario"]."+".$usuario["password_usuario"]);
 
                 if ($compara == $_POST["tkUser"]) {
 

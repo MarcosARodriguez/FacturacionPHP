@@ -34,6 +34,104 @@ $usuarios = MvcController::ctrUsuarios(null, null);
                 </button>
             </div>
         </div>
+        <div id="nuevoUsuario" class="modal fade" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form method="post">
+                        <!-- MODAL HEADER-->
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <i class="fas fa-edit"></i>
+                                Agregar nuevo Usuario
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- MODAL BODY-->
+                        <div class="modal-body">     
+                                <div class="form-row" style="margin-bottom: 15px;">
+                                    <label for="nombreUsuario" class="col-sm-3 bg-light">Nombres</label>
+                                    <div class="col-sm-8 bg-light">
+                                        <input type="text" name="regisNameuser" id="nameuser" class="form-control" placeholder="Nombres del Usuario" required>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-bottom: 15px;">
+                                    <label for="apellidoUsuario" class="col-sm-3">Apellidos</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" name="regisLastuser" id="lastuser" class="form-control" placeholder="Apellidos del producto" required>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-bottom: 15px;">
+                                    <label for="usuario" class="col-sm-3">Usuario</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="regisUser" id="user" class="form-control" placeholder="Usuario" required>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-bottom: 15px;">
+                                    <label for="correo" class="col-sm-3">Correo</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="regisMail" id="mail" class="form-control" placeholder="Correo" required>
+                                    </div>
+                                </div>
+                                <div class="form-row" style="margin-bottom: 15px;">
+                                    <label for="contraseña" class="col-sm-3">Contraseña</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="regisPass" id="password" class="form-control" placeholder="Contraseña" required>
+                                    </div>
+                                </div>
+                                <?php
+                                $registro = MvcController::ctrRegistro();
+
+                                ?>
+                        </div>
+                        <!-- MODAL FOOTER-->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" id="guardar_datos">Guardar datos</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php
+            if ($registro == "ok") {
+                # linea javascript para vaciar la cache del navegador asi no se envia los datos al actualizar la pagina
+                echo '<script>      
+                            if (window.history.replaceState) {
+                                window.history.replaceState(null, null, window.location.href);
+                            }
+                        </script>';
+                # sweet alert para mensajes o alertas mas vistosas
+                echo '<script>
+                        Swal.fire({
+                            type: "success",
+                            title: "Usuario Registrado",
+                            icon: "success",
+                            showConfirmButton: false
+                        })
+                    </script>';
+                #esto forzara a que se actualice la pagina para ver los cambios
+                /**echo '<script>
+                    setTimeout(function(){
+                        window.location = "index.php?action=usuarios";
+                    },1500);
+                </script>';*/
+            } elseif ($registro == "error") {
+                echo '<script>      
+                            if (window.history.replaceState) {
+                                window.history.replaceState(null, null, window.location.href);
+                            }
+                        </script>';
+                echo '<script>
+                        Swal.fire({
+                            type: "error",
+                            title: "El Usuario no se ha podido Registrar",
+                            icon: "error",
+                            showConfirmButton: false
+                        })
+                    </script>';
+            }
+
+        ?>
     </div>
 
 <div class="container-fluid py-5">
@@ -46,7 +144,7 @@ $usuarios = MvcController::ctrUsuarios(null, null);
                     <th>Apellidos</th>
                     <th>Usuario</th>
                     <th>Email</th>
-                    <th>Fecha Rgistro</th>
+                    <th>Fecha Registro</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -61,7 +159,7 @@ $usuarios = MvcController::ctrUsuarios(null, null);
                         <td>
                             <div class="btn-group">
                                 <!-- boton para editar envia a otra pagina y envia el id a traves de la url-->
-                                <a href="index.php?action=editar&tk=<?php echo $value["token_usuario"]; ?>" class="btn btn-warning">
+                                <a href="index.php?action=editar_user&tk=<?php echo $value["token_usuario"]; ?>" class="btn btn-warning">
                                     <i class="fas fa-pencil-alt"></i>
                                     Editar
                                 </a>

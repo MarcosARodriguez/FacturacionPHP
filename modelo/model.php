@@ -21,7 +21,7 @@
                 break;
                 case 'usuarios' : $modulo = "vistas/modulos/".$enlaceModel.".php";
                 break;
-                case 'editar' : $modulo = "vistas/modulos/".$enlaceModel.".php";
+                case 'editar_user' : $modulo = "vistas/modulos/".$enlaceModel.".php";
                 break;
                 case 'salir' : $modulo = "vistas/modulos/".$enlaceModel.".php";
                 break;
@@ -113,8 +113,8 @@
         #----------------------------------------------------------------------------
         public static function mdlUpdate($tabla, $datos){
 
-            $stmt = Connection::conectar()->prepare("UPDATE $tabla SET nombre=:nombre, email=:email,
-                                                     password=:password WHERE token=:token");
+            $stmt = Connection::conectar()->prepare("UPDATE $tabla SET name_usuario=:nombre, mail_usuario=:email,
+                                                     password_usuario=:password WHERE token_usuario=:token");
             $stmt->bindParam(":nombre", $datos["nombre"],  PDO::PARAM_STR);
             $stmt->bindParam(":email", $datos["email"],  PDO::PARAM_STR);
             $stmt->bindParam(":password", $datos["password"],  PDO::PARAM_STR);

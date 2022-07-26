@@ -125,15 +125,15 @@ LA PAGINA WEB SIEMPRE DEBE INICIAR POR EL INDEX.PHP
 
                         <?php break; ?>
                     <?php
-                    case 'editar': ?>
+                    case 'editar_user': ?>
                         <li class="nav-item">
-                            <a class="nav-link " href="index.php?action=ingreso">INGRESO</a>
+                            <a class="nav-link " href="index.php?action=ingreso">FACTURA</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="index.php?action=factura">FACTURA</a>
+                            <a class="nav-link " href="index.php?action=factura">PRODUCTOS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.php?action=registro">ACTUALIZAR</a>
+                            <a class="nav-link " href="index.php?action=registro">CLIENTES</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="index.php?action=usuarios">USUARIOS</a>
