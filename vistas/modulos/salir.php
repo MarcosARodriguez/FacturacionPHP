@@ -21,7 +21,7 @@
 ?>
 <div class="container-fluid py-5">
         <div class="container">
-            <h1>¡HAS SALIDO DE LA APLICACION!</h1>
+            <h1>¡HAS SALIDO DEL SISTEMA!</h1>
             <a href="index.php?action=login" class="btn btn-primary">Volver</a>
         </div>
 </div>
