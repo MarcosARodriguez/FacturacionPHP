@@ -18,13 +18,33 @@ $usuarios = MvcController::ctrUsuarios(null, null);
 #echo "<pre>"; print_r($usuarios); echo "</pre>";
 ?>
 
+<div class="container pt-5 border">
+    <div class="encabezado">
+        <div class="row">
+            <div class="col">
+                <h4>
+                    <i class="fas fa-search"></i>
+                    BUSCAR USUARIO
+                </h4>
+            </div>
+            <div class="btn-group col-sm-3 pull-right">
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#nuevoUsuario">
+                    <span class="fas fa-plus"></span>
+                    NUEVO USUARIO
+                </button>
+            </div>
+        </div>
+    </div>
+
 <div class="container-fluid py-5">
     <div class="container">
         
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Nombre</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Usuario</th>
                     <th>Email</th>
                     <th>Fecha Rgistro</th>
                     <th>Acciones</th>
@@ -33,19 +53,21 @@ $usuarios = MvcController::ctrUsuarios(null, null);
             <tbody>
                 <?php foreach ($usuarios as $key  => $value) : ?>
                     <tr>
-                        <td><?php echo $value["nombre"]; ?></td>
-                        <td><?php echo $value["email"]; ?></td>
-                        <td><?php echo $value["fecha_register"]; ?></td>
+                        <td><?php echo $value["name_usuario"]; ?></td>
+                        <td><?php echo $value["apellido_usuario"]; ?></td>
+                        <td><?php echo $value["user_usuario"]; ?></td>
+                        <td><?php echo $value["mail_usuario"]; ?></td>
+                        <td><?php echo $value["date_create_usuario"]; ?></td>
                         <td>
                             <div class="btn-group">
                                 <!-- boton para editar envia a otra pagina y envia el id a traves de la url-->
-                                <a href="index.php?action=editar&tk=<?php echo $value["token"]; ?>" class="btn btn-warning">
+                                <a href="index.php?action=editar&tk=<?php echo $value["token_usuario"]; ?>" class="btn btn-warning">
                                     <i class="fas fa-pencil-alt"></i>
                                     Editar
                                 </a>
 
                                 <form method="POST">
-                                    <input type="hidden" name="deleteUser" value="<?php echo $value["id"]; ?>"> <!-- id del usuario guardado en un campo oculto -->
+                                    <input type="hidden" name="deleteUser" value="<?php echo $value["id_usuario"]; ?>"> <!-- id del usuario guardado en un campo oculto -->
                                     <button type="submit" class="btn btn-danger">
                                         <i class="fas fa-trash-alt"></i>
                                         Eliminar

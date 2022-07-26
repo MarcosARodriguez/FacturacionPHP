@@ -34,7 +34,7 @@
             ?>
 
             <button type="submit" class="btn btn-primary">Ingresar</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nuevoUsuario" data-keyboard="true">Registrar</button>
+            
         </form>
         <div id="nuevoUsuario" class="modal fade" role="dialog">
             <div class="modal-dialog" role="document">
